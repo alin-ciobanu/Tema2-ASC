@@ -1,0 +1,18 @@
+CC=gcc
+CFLAGS="-O5"
+
+atlas:
+	$(CC) -Wall -o atlas_opteron -I/opt/tools/libraries/atlas/3.10.1-opteron-gcc-4.4.6/include/ -L/opt/tools/libraries/atlas/3.10.1-opteron-gcc-4.4.6/lib/ atlas_impl.c -lcblas -latlas
+by_hand:
+	$(CC) -Wall -o by_hand_opteron -I/opt/tools/libraries/atlas/3.10.1-opteron-gcc-4.4.6/include/ -L/opt/tools/libraries/atlas/3.10.1-opteron-gcc-4.4.6/lib/ by_hand.c -lcblas -latlas
+optim:
+	$(CC) -Wall $(CFLAGS) -o optim_opteron -I/opt/tools/libraries/atlas/3.10.1-opteron-gcc-4.4.6/include/ -L/opt/tools/libraries/atlas/3.10.1-opteron-gcc-4.4.6/lib/ by_hand.c -lcblas -latlas
+
+clean_atlas:
+	rm -Rf atlas_opteron
+
+clean_by_hand:
+	rm -Rf by_hand_opteron
+
+clean_optim:
+	rm -Rf optim_opteron
